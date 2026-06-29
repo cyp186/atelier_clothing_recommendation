@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Review Submitted – Atelier{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <div class="success-banner">
+    <span class="success-icon">✓</span>
+    <h1>Review Submitted!</h1>
+    <p>Your review has been saved and is now live on the website.</p>
+    <p class="permalink-label">Permanent URL for this review:</p>
+    <code class="permalink">{{ request.url }}</code>
+  </div>
+
+  <div class="review-detail-card">
+    <h2>{{ review['Title'] }}</h2>
+    <div class="review-header">
+      <span class="stars">{{ '★' * review['Rating']|int }}{{ '☆' * (5 - review['Rating']|int) }}</span>
+      <span class="recommend-badge {% if review['Recommended IND'] == 1 %}recommended{% else %}not-recommended{% endif %}">
+        {% if review['Recommended IND'] == 1 %}✓ Recommended{% else %}✗ Not Recommended{% endif %}
+      </span>
+    </div>
+    <p class="review-text">{{ review['Review Text'] }}</p>
+    <div class="review-meta-tags">
+      <span class="tag">{{ review['Class Name'] }}</span>
+      <span class="tag">{{ review['Department Name'] }}</span>
+      {% if review['Age'] %}<span class="tag">Age: {{ review['Age'] }}</span>{% endif %}
+    </div>
+  </div>
+
+  <div class="form-actions centered">
+    <a class="btn" href="{{ url_for('item_detail', item_id=review['Clothing ID']) }}">Back to Item</a>
+    <a class="btn btn-primary" href="{{ url_for('index') }}">Continue Shopping</a>
+  </div>
+</div>
+{% endblock %}

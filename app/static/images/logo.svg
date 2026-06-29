@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 36" fill="none">
+  <!-- Hanger hook -->
+  <path d="M70 4 C70 2 71.5 1 73 1 C74.5 1 76 2 76 4 L76 7" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <!-- Hanger body -->
+  <path d="M76 7 L96 22 L44 22 Z" stroke="#3b82f6" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+  <!-- Text centered below -->
+  <text x="70" y="33" font-family="Georgia, serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="3.5" text-anchor="middle">ATELIER</text>
+</svg>

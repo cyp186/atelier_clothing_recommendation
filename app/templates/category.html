@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ department }} – Atelier{% endblock %}
+
+{% block content %}
+<div class="breadcrumb">
+  <a href="{{ url_for('index') }}">Home</a> / {{ department }}
+</div>
+
+<h1 class="section-heading">{{ department }}</h1>
+<p class="result-count">{{ count }} items in {{ department }}</p>
+
+{% if classes %}
+<div class="dept-pills">
+  {% for cls in classes %}
+    <span class="pill pill-passive">{{ cls }}</span>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="item-grid">
+  {% for item in items %}
+  <a class="item-card" href="{{ url_for('item_detail', item_id=item['Clothing ID']) }}">
+    <div class="item-badge">{{ item['class_name'] }}</div>
+    <div class="item-body">
+      <h3>{{ item['clothes_title'] }}</h3>
+      <p class="item-desc">{{ item['clothes_desc'][:80] }}…</p>
+      <div class="item-meta">
+        <span class="stars">{{ '★' * item['avg_rating']|int }}{{ '☆' * (5 - item['avg_rating']|int) }}</span>
+        <span>{{ item['avg_rating'] }}/5 &bull; {{ item['review_count'] }} reviews</span>
+      </div>
+      <div class="recommend-bar">
+        <div class="recommend-fill" style="--pct: {{ item.recommended_pct }}"></div>
+      </div>
+      <small>{{ item.recommended_pct }}% recommend</small>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

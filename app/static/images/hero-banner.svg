@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#152238"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur1"><feGaussianBlur stdDeviation="40"/></filter>
+    <filter id="blur2"><feGaussianBlur stdDeviation="60"/></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="320" fill="url(#bg)"/>
+
+  <!-- Glow blobs -->
+  <ellipse cx="200" cy="160" rx="200" ry="150" fill="url(#accent1)" filter="url(#blur2)"/>
+  <ellipse cx="1050" cy="100" rx="180" ry="130" fill="url(#accent2)" filter="url(#blur2)"/>
+
+  <!-- Geometric fashion elements -->
+  <!-- Left hanger group -->
+  <g opacity="0.15" stroke="#3b82f6" stroke-width="1.5" fill="none">
+    <path d="M80 60 C80 52 86 46 94 46 C102 46 108 52 108 60 L108 66 L140 110 L48 110 Z"/>
+    <line x1="94" y1="46" x2="94" y2="40"/>
+    <circle cx="94" cy="38" r="4"/>
+  </g>
+  <!-- Right hanger group -->
+  <g opacity="0.1" stroke="#ffffff" stroke-width="1" fill="none">
+    <path d="M1050 80 C1050 74 1054 70 1060 70 C1066 70 1070 74 1070 80 L1070 84 L1090 110 L1030 110 Z"/>
+    <line x1="1060" y1="70" x2="1060" y2="66"/>
+    <circle cx="1060" cy="64" r="3"/>
+  </g>
+
+  <!-- Diagonal lines pattern -->
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="320" x2="320" y2="0"/>
+    <line x1="80" y1="320" x2="400" y2="0"/>
+    <line x1="160" y1="320" x2="480" y2="0"/>
+    <line x1="240" y1="320" x2="560" y2="0"/>
+    <line x1="800" y1="320" x2="1120" y2="0"/>
+    <line x1="880" y1="320" x2="1200" y2="0"/>
+    <line x1="960" y1="320" x2="1200" y2="80"/>
+    <line x1="1040" y1="320" x2="1200" y2="160"/>
+  </g>
+
+  <!-- Dots grid -->
+  <g fill="#3b82f6" opacity="0.12">
+    <circle cx="400" cy="40" r="2"/>  <circle cx="440" cy="40" r="2"/>  <circle cx="480" cy="40" r="2"/>
+    <circle cx="400" cy="80" r="2"/>  <circle cx="440" cy="80" r="2"/>  <circle cx="480" cy="80" r="2"/>
+    <circle cx="400" cy="120" r="2"/> <circle cx="440" cy="120" r="2"/> <circle cx="480" cy="120" r="2"/>
+    <circle cx="700" cy="200" r="2"/> <circle cx="740" cy="200" r="2"/> <circle cx="780" cy="200" r="2"/>
+    <circle cx="700" cy="240" r="2"/> <circle cx="740" cy="240" r="2"/> <circle cx="780" cy="240" r="2"/>
+    <circle cx="700" cy="280" r="2"/> <circle cx="740" cy="280" r="2"/> <circle cx="780" cy="280" r="2"/>
+  </g>
+
+  <!-- Thin accent line -->
+  <line x1="0" y1="318" x2="1200" y2="318" stroke="#3b82f6" stroke-width="2" opacity="0.4"/>
+</svg>

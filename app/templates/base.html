@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Atelier{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ url_for('index') }}" class="logo">
+      <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Atelier"/>
+    </a>
+    <form class="search-bar" action="{{ url_for('search') }}" method="get">
+      <input type="text" name="q" placeholder="Search clothing…" value="{{ request.args.get('q','') }}"/>
+      <button type="submit">Search</button>
+    </form>
+    <nav class="main-nav">
+      <a href="{{ url_for('index') }}">Home</a>
+      {% for dept in departments %}
+        <a href="{{ url_for('category', department=dept) }}">{{ dept }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <p><span>Atelier</span> &copy; 2026 &mdash; Women's E-Commerce Clothing</p>
+</footer>
+
+</body>
+</html>

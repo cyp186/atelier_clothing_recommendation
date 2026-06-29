@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Atelier – Women's Clothing{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <img class="hero-banner" src="{{ url_for('static', filename='images/hero-banner.svg') }}" alt="Atelier Banner"/>
+  <div class="hero-overlay">
+    <h1>Discover Your <span>Style</span></h1>
+    <p>Browse {{ total_items }} curated items, reviewed by real customers.</p>
+    <a class="hero-btn" href="#items">Shop Now</a>
+  </div>
+</section>
+
+<div class="dept-pills">
+  {% for dept in departments %}
+    <a class="pill" href="{{ url_for('category', department=dept) }}">{{ dept }}</a>
+  {% endfor %}
+</div>
+
+<h2 class="section-heading" id="items">All Items</h2>
+<div class="item-grid">
+  {% for item in items %}
+  <a class="item-card" href="{{ url_for('item_detail', item_id=item['Clothing ID']) }}">
+    <div class="item-badge">{{ item['class_name'] }}</div>
+    <div class="item-body">
+      <h3>{{ item['clothes_title'] }}</h3>
+      <p class="item-desc">{{ item['clothes_desc'][:80] }}…</p>
+      <div class="item-meta">
+        <span class="stars">{{ '★' * item['avg_rating']|int }}{{ '☆' * (5 - item['avg_rating']|int) }}</span>
+        <span>{{ item['avg_rating'] }}/5</span>
+        <span>&bull;</span>
+        <span>{{ item['review_count'] }} reviews</span>
+      </div>
+      <div class="recommend-bar">
+        <div class="recommend-fill" style="--pct: {{ item.recommended_pct }}"></div>
+      </div>
+      <small>{{ item.recommended_pct }}% recommend</small>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if page > 1 %}
+    <a class="btn" href="{{ url_for('index', page=page-1) }}">&larr; Prev</a>
+  {% endif %}
+  <span>Page {{ page }} of {{ total_pages }}</span>
+  {% if page < total_pages %}
+    <a class="btn" href="{{ url_for('index', page=page+1) }}">Next &rarr;</a>
+  {% endif %}
+</div>
+{% endblock %}

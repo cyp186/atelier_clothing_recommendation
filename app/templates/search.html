@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Search: {{ query }} – Atelier{% endblock %}
+
+{% block content %}
+<h1 class="section-heading">Search Results</h1>
+
+{% if query %}
+  <p class="result-count">
+    <strong>{{ count }}</strong> item{% if count != 1 %}s{% endif %} matched
+    "<em>{{ query }}</em>"
+  </p>
+{% endif %}
+
+{% if items %}
+  <div class="item-grid">
+    {% for item in items %}
+    <a class="item-card" href="{{ url_for('item_detail', item_id=item['Clothing ID']) }}">
+      <div class="item-badge">{{ item['class_name'] }}</div>
+      <div class="item-body">
+        <h3>{{ item['clothes_title'] }}</h3>
+        <p class="item-desc">{{ item['clothes_desc'][:80] }}…</p>
+        <div class="item-meta">
+          <span class="stars">{{ '★' * item['avg_rating']|int }}{{ '☆' * (5 - item['avg_rating']|int) }}</span>
+          <span>{{ item['avg_rating'] }}/5 &bull; {{ item['review_count'] }} reviews</span>
+        </div>
+        <div class="recommend-bar">
+          <div class="recommend-fill" style="--pct: {{ item.recommended_pct }}"></div>
+        </div>
+        <small>{{ item.recommended_pct }}% recommend</small>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+{% elif query %}
+  <div class="empty-state">
+    <p>No items found for "<em>{{ query }}</em>". Try a different keyword.</p>
+    <a class="btn" href="{{ url_for('index') }}">Browse All Items</a>
+  </div>
+{% endif %}
+{% endblock %}
